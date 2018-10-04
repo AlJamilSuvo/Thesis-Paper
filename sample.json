@@ -1,0 +1,75 @@
+{
+    "CLASS_NAME":["A","B","C","D","E","F"],
+    "GENERALIZATION":[
+        {
+            "Provider":"A",
+            "Receiver":"B",
+            "Extended_Attribute":0,
+            "Extended_Method":1
+           
+        },
+        {
+            "Provider":"C",
+            "Receiver":"D",
+            "Extended_Method":1,
+            "Extended_Attribute":1
+            
+        }
+    ],
+    "DEPENDENCY":[
+        {
+            "Receiver":"D",
+            "Provider":"B"
+        }
+    ],
+    "ASSOCIATION":[
+        {
+            "Receiver":"E",
+            "Provider":"B"
+        }
+    ],
+    "AGGREGATION":[
+        {
+            "Receiver":"D",
+            "Provider":"A"
+        }
+    ],
+    "COMPOSITION":[
+        {
+            "Receiver":"F",
+            "Provider":"C"
+        }
+    ],
+    "CLASS_DETAILS_F":{
+        "IS_CRITICAL_CLASS":false,
+        "CRITICALLY_INTERACTING_CLASSES":[],
+        "IS_ABSTRACT":false
+    },
+    "CLASS_DETAILS_D":{
+        "IS_CRITICAL_CLASS":false,
+        "CRITICALLY_INTERACTING_CLASSES":[],
+        "IS_ABSTRACT":false
+    },
+    "CLASS_DETAILS_E":{
+        "IS_CRITICAL_CLASS":false,
+        "CRITICALLY_INTERACTING_CLASSES":[],
+        "IS_ABSTRACT":false
+    },
+   
+    "CLASS_DETAILS_B":{
+        "IS_CRITICAL_CLASS":true,
+        "CRITICALLY_INTERACTING_CLASSES":["D"],
+        "IS_ABSTRACT":false
+    },
+    "CLASS_DETAILS_C":{
+        "IS_CRITICAL_CLASS":false,
+        "CRITICALLY_INTERACTING_CLASSES":[],
+        "IS_ABSTRACT":true
+    },
+    "CLASS_DETAILS_A":{
+        "IS_CRITICAL_CLASS":false,
+        "CRITICALLY_INTERACTING_CLASSES":[],
+        "IS_ABSTRACT":false
+    }
+    
+}
