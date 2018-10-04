@@ -141,11 +141,11 @@ Malhotr  \textit{et al}~\cite{malhotra2017exploratory} also worked related to ou
 
 In past research, multi-objective evolutionary algorithms(MOEAs) ~\cite{zhou2011multiobjective} is NSGA-II(Non dominated Sorting Genetic Algorithm II) ~\cite{deb2002fast} are widely used.
 
-But due to complexity of Software Engineering many-objective algorithms generate much better results than MOEAs ~\cite{purshouse2007evolutionary, coello2007evolutionary}. 
+But due to complexity of Software Engineering many-objective algorithms generate much better results than MOEAs~\cite{purshouse2007evolutionary, coello2007evolutionary}. 
 
-Hence, in Recent times for Evolutionary Computation of SBSE many objective algorithms are used.  ~\cite{ramirez2016comparative,bader2011hype, yang2013grid, zhang2007moea}.
+Hence, in Recent times for Evolutionary Computation of SBSE many objective algorithms are used~\cite{ramirez2016comparative,bader2011hype, yang2013grid, zhang2007moea}.
 
-For the necessity of Many-Objective Algorithms, many researchers worked to improve its performance. Dev \textit{et el}~\cite{deb2014evolutionary} have proposed NSGAIII algorithms, which is most popular Many-Objective Algorithms. In recent times researchers also worked based on this algorithms. Yuan \textit{et al}~\cite{yuan2016new} have developed ThetaDEA algorithms which is an improved version of NSGAIII algorithms. 
+For the necessity of Many-Objective Algorithms, many researchers worked to improve its performance. Dev \textit{et. el.}~\cite{deb2014evolutionary} have proposed NSGAIII algorithms, which is most popular Many-Objective Algorithms. In recent times researchers also worked based on this algorithms. Yuan \textit{et al}~\cite{yuan2016new} have developed ThetaDEA algorithms which is an improved version of NSGAIII algorithms. 
 
 
 
@@ -241,40 +241,30 @@ To measure the performance, maintenance and security of the software, we propose
 
 
 \subsection{Metrics Related to Performance and Maintenance}
-We have considered  10 metrics which are related to performance and maintenance of a software. Primarily the main objective of a software is to serve its functional requirements. Software architecture is designed in this manner so that it serves those requirements. Besides those requirements, some non-functional requirements such as performance, maintenance is also considered. Hence, while designing a software architecture, architects have to deal with some aspects of that software like understanding, reuse, construction, evaluation, analysis, and management\cite{garlan2000software}. Here, we considered some metrics those are not directly tied to the functional requirements, but important for other non-functional requirements. Somme metrics are important for modularity. Those ensure smooth and fluent development process with future modification, inclusion, and correction. 
+We have considered  10 metrics which are related to performance and maintenance of a software. Primarily the main objective of a software is to serve its functional requirements. Software architecture is designed in this manner so that it serves those requirements. Besides those requirements, some non-functional requirements such as performance, maintenance is also considered. Hence, while designing a software architecture, architects have to deal with some aspects of that software like understanding, reuse, construction, evaluation, analysis, and management\cite{garlan2000software}. Here, we considered some metrics those are not directly tied to the functional requirements, but important for other non-functional requirements. Some metrics are important for modularity. Those ensure smooth and fluent development process with future modification, inclusion, and correction. 
 In software engineering, there are some core parts those can be used for other software development. Hence, some metrics are selected to obtain reusability.
-Those 10 metrics are selected
+We have explored other research papers for metrics. There are some similar types of metrics and some metrics have no context in our problem. Considering those criteria, we selected 10 metrics.
  \newline
-For each metrics calculation,  We assume the number of components of the architecture is $n$. 
+For each metric calculation,  we assume the number of components of the architecture is $n$. 
 
 \begin{enumerate}
-\item \textbf{Intra-modular Coupling Density (icd):} This metric represents the ratio of a internal and external interactions of a component. This metrics was proposed by Gupta~\cite{gupta2012optimization}. \newline
- Let us assume that, $\#classes_{total}$ be number of total classes of genotype and $\#classes_{i}$
-be he number of component $i$. $c^{in}_i$ and $c^{out}_i$ respectively denote the number of inner and outer connections of component $i$. Then Intra-modular Coupling Density of component $i$ is $icd_{i}$ and of genotype if $icd$.
+\item \textbf{Intra-modular Coupling Density (icd):} This metric represents the ratio of a internal and external interactions of a component. This metric was proposed by Gupta~\cite{gupta2012optimization}. Let us assume that $\#classes_{total}$ be number of total classes of genotype and $\#classes_{i}$ be the number of component $i$. Also let $c^{in}_i$ and $c^{out}_i$ denote the number of inner and outer connections of component $i$ respectively and  Intra-modular Coupling Density of component $i$ is $icd_{i}$. Then,
+\begin{equation}\label{icd_eq_i}
+icd_{i}=\frac{\#classes_{total}-\#classes_{i}}{\#classes_{total}}\times\frac{c^{in}_i}{c^{in}_i+c^{out}_i} 
+\end{equation}\\
+For all components,
 \begin{equation}\label{icd_eq}
- \begin{array}{l}
-icd_{i}=\frac{\#classes_{total}-\#classes_{i}}{\#classes_{total}}\times\frac{c^{in}_i}{c^{in}_i+c^{out}_i} \\\\
 icd=\frac{1}{n}\sum{icd_{i}}
-\end{array}
 \end{equation}
-\item \textbf{External Relations Penalty (erp):} This metric is proposed by Krogmann\cite{krogmann2012reconstruction}. This is a weighted sum of different types of relation. For two component pair $i$ and $j$,
+For other metrics we shall follow same convertion.
 
-Let's assume that,
-$(w_{as},n_{as_{ij}})$ be the weight and the number of relation for Associations. Similarly
-$(w_{ag},n_{ag_{ij}})$,
-$(w_{co}, n_{co_{ij}})$,
-$(w_{co} ,n_{co_{ij}})$, $(w_{ge},n_{ge_{ij}})$ are  the weight and the number of relation for Aggregation, Composition, and Generalization respectively.
-
-
+\item \textbf{External Relations Penalty (erp):} This metric is proposed by Krogmann\cite{krogmann2012reconstruction}. This is the weighted sum of different types of relations. For two component pair $i$ and $j$, let us assume that, $(w_{as},n_{as_{ij}})$ be the weight and the number of relation for Associations. Similarly let $(w_{ag},n_{ag_{ij}})$, $(w_{co}, n_{co_{ij}})$, $(w_{co} ,n_{co_{ij}})$, $(w_{ge},n_{ge_{ij}})$ be  the weight and the number of relation for Aggregation, Composition, and Generalization respectively. Then $erp$ is computed as:
 \begin{equation}\label{erp_eq}
- erp=\sum_{i=1}^{n}{\sum_{j=i+1}^{n}}{w_{as}n_{as_{ij}}+
- w_{ag}n_{ag_{ij}}+
- w_{co}n_{co_{ij}}+
- w_{ge}n_{ge_{ij}}
-}
+ erp=\sum_{i=1}^{n}{\sum_{j=i+1}^{n}}{w_{as}n_{as_{ij}}+w_{ag}n_{ag_{ij}}+w_{co}n_{co_{ij}}+w_{ge}n_{ge_{ij}}}
 \end{equation}
+
 \item \textbf{Cohesion inside a Component (coc):}
-This metric represents the ratio of internal connection and the number of classes of a component to find the cohesion inside a component.Total $coc$ will be average $coc$ of all components.Let's assume that, for component $i$ the number of classes be $\#class_{i}$ and  the number of internal connection be $\#connection^{in}_{i}$ and cohesion of that component be $coc_{i}$. Then,
+This metric represents the ratio of internal connection and the number of classes of a component to find the cohesion inside a component.Total $coc$ will be average $coc$ of all components. Let us assume that, for component $i$ the number of classes be $\#class_{i}$ and  the number of internal connections be $\#connection^{in}_{i}$ and cohesion of that component be $coc_{i}$. Then,
 \begin{equation}\label{coc_eq}
  \begin{array}{l}
 coc_{i}=\frac{\#connection^{in}_{i}}{\#classes_{total}} \\
@@ -282,21 +272,18 @@ coc=\frac{1}{n}\sum{coc_{i}}
 \end{array}
 \end{equation}
 
-\item \textbf{Link Criticality (lc):} Link Criticality is defined as a condition in which a component has many links to other components. There is a $threshold_{link}$ limit for the number of links for a component. This metrics is proposed by Narasimhan and Hendradjaya  \cite{narasimhan2007some}. \\
-Let us assume, $\#component_{link\_crtiticality}$ and $\#component_{total}$ be  number of components which have crossed link limit $threshold$ and total number of component respectively.
+\item \textbf{Link Criticality (lc):} Link Criticality is defined as a condition in which a component has many links to other components. There is a $threshold_{link}$ limit for the number of links for a component. This metric is proposed by Narasimhan and Hendradjaya  \cite{narasimhan2007some}. Let us assume that $\#component_{link\_crtiticality}$ and $\#component_{total}$ be  the number of components which have crossed $threshold$ and total number of component respectively. Then, Link Criticality:
 \begin{equation}\label{lc_eq}
 lc=\frac{\#component_{link\_criticality}}{\#component_{total}\textbf{}}
 \end{equation}
 
-\item \textbf{Size Criticality (sc):} Size Criticality is defined as a condition in which a component has many classes. There is a $threshold_{size}$ limit for the number of classes. This metrics is proposed by Narasimhan and Hendradjaya  \cite{narasimhan2007some}. \\
-Let us assume that, $\#component_{size\_crtiticality}$ and $\#component_{total}$ be the  number of components which have crossed size limit $threshold$ and total number of component respectively. 
+\item \textbf{Size Criticality (sc):} Size Criticality is defined as a condition in which a component has many classes. There is a $threshold_{size}$ limit for the number of classes. This metric is proposed by Narasimhan and Hendradjaya  \cite{narasimhan2007some}. Let us assume that, $\#component_{size\_crtiticality}$ and $\#component_{total}$ be the  number of components which have crossed size limit $threshold$ and total number of components respectively. Then, size Criticality:
 \begin{equation}\label{sc_eq}
 sc=\frac{\#component_{size\_criticality}}{\#component_{total}}
 \end{equation}
 
-\item \textbf{Interaction Density (id):} A component both provides and receives some connections. Interaction Density (id) is the ratio of connection provided and total connection. Concept of this metric defined by Matrin~\cite{martin1994oo}. Later it was proposed by Sant'Anna \textit{et al}~\cite{sant2007modularity}\\
-Let us assume that, for component $i$
-$\#con_{provide}$ be number of provided connection and $\#con_{receive}$ be number of received connection. 
+\item \textbf{Interaction Density (id):} A component provides and receives some connections. Interaction Density (id) is the ratio of connection provided and total connection. This metric is defined by Matrin~\cite{martin1994oo}. Later it was proposed by Sant'Anna \textit{et. al.}~\cite{sant2007modularity}. Let us assume that, for component $i$,
+$\#con_{provide}$ be the number of provided connections and $\#con_{receive}$ be the number of received connections. Then,
 \begin{equation}\label{id_eq}
  \begin{array}{l}
 id_{i}=\frac{\#con_{provide}}{\#con_{provide}+\#con_{receive}} \\\\
@@ -305,37 +292,32 @@ id=\frac{1}{n}\sum{id_{i}}
 \end{equation}
 
 
-\item \textbf{Encapsulation (enc):} This metric measures the ratio of hidden classes with respect to component. For component $i$ if the number of inner classes and total classes are respectively $\#classes_{inner}$ and $\#classes_{total}$ respectively. Encapsulation is calculated for that component by the ratio of these values. Overall encapsulation is calculated by averaging encapsulation of all components. Hence, Encapsulation for Component i,
+\item \textbf{Encapsulation (enc):} This metric measures the ratio of hidden classes with respect to component. This metrics is proposed by Bansiya and Davis\cite{bansiya2002hierarchical}. For component $i$ let the number of inner classes and total classes be $\#classes_{inner}$ and $\#classes_{total}$ respectively. Encapsulation is calculated for that component by the ratio of these values. Overall encapsulation is calculated by averaging encapsulation of all components. Hence, encapsulation for Component $i$:
 
  \begin{displaymath}
 enc_{i}=\frac{\#classes_{inner}}{\#classes_{total}} 
  \end{displaymath}
-Over all Encapsulation,
+Overall encapsulation:
 
 \begin{equation} \label{enc_eq}
 enc=\frac{1}{n}\sum{enc_{i}}
 \end{equation}
-This metrics is proposed by Bansiya and Davis~\cite{bansiya2002hierarchical}.
 
 
-\item \textbf{ McCabe's Cyclomatic Complexity (cc):} Cyclomatic complexity is  used to indicate the complexity of a architecture. This metric is proposed by McCabe and Thomas~\cite{mccabe1976complexity}.\\ 
-Let assume, $\#con$ is the number of connections of architecture.\\
-$\#com$ is the number of components.\\
-$\#Con\_com$ is the connected components. \\
-then Cyclomatic complexity will be:
+
+\item \textbf{ McCabe's Cyclomatic Complexity (cc):} Cyclomatic complexity is  used to indicate the complexity of a architecture. This metric is proposed by McCabe and Thomas~\cite{mccabe1976complexity}. Let us assume that  $\#con$ be the number of connections of  an architecture, $\#com$ be the number of components, and  $\#Con\_com$ be the connected components. Then Cyclomatic complexity will be:
 \begin{equation}\label{cc_eq}
 cc=\#con - \#com + \#con\_com 
 \end{equation}
 
 \item \textbf{Groups/Components Ratio (gcr):}
-The metric is the ratio of number of connected classes ($\#classes_{connected}$) and number of components ($\#component$).
+The metric is the ratio of number of connected classes ($\#classes_{connected}$) and number of components ($\#component$). Then,
 \begin{equation}
 gcr=\frac{\#classes_{connected}}{\#component}
 \end{equation}
-This metric is proposed by  Narasimhan and Hendradjaya ~\cite{narasimhan2007some}.
+It is proposed by  Narasimhan and Hendradjaya\cite{narasimhan2007some}.
 
-\item \textbf{Abstractness (abs): }For a component, abstractness is the ratio between the number of abstract classes and total classes. Abstractness of full architecture is measured by averaging abstractness of all components. This metric is proposed by ~\cite{krogmann2012reconstruction}. \\
-Let us assume that, for component $i$ $\#classes_{abstract}$ be the number of abstract classes, and $\#classes_{total}$ be the number of total classes.
+\item \textbf{Abstractness (abs): }For a component, abstractness is the ratio between the number of abstract classes and total classes. Abstractness of full architecture is measured by averaging abstractness of all components. This metric is proposed by Krogmann\cite{krogmann2012reconstruction}. Let us assume that, for component $i$ $\#classes_{abstract}$ be the number of abstract classes, and $\#classes_{total}$ be the number of total classes. Then,
 \begin{equation}\label{abs_eq}
  \begin{array}{l}
 abs_{i}=\frac{\#classes_{abstract}}{\#classes_{total}} \\
@@ -354,8 +336,8 @@ abs=\frac{1}{n}\sum{abs_{i}}
 
 
 
-\subsection{Security Metrics}
-Security is recently considered very important part of  software engineering. Genotype is bottom level of a software. In genotype representation, each component works individually and  communicate each other through the connection between them. 
+\subsection{Metrics Releted to Security}
+Security is recently considered very important part of  software engineering. In genotype representation, each component works individually and  communicate with each other through the connection between them. 
 %Here outer a malicious component can set up to make connecting one of the components of a software and raise a security worry.  
 Careful connection set up between different components can bring down this security concern. Hence, we proposed five security metrics to determine the risk of a genotype. \\ 
 First, we have to identify \textbf{Critical Classes}. A class will be called critical if any of its classified private attributes can be modified from outer side of that class \cite{alshammari2010security}. A component with the critical class will be considered as a critical component. Those components have higher security  vulnerabilities . The formation and connection of that component must be set carefully to reduce those  vulnerabilities .
@@ -465,8 +447,8 @@ We summarize the steps of our method in Algorithm 1, which are explained further
         \State $P_{t+1} \gets S_t$
         \Else
         \State $P_{t+1} \gets \cup _{i=1}^{l-1}F_i$
-        \State $\pi({\mathbf{s})}$=\mathbf{Associate}$(F_l,R^p)$ \% $\pi({\mathbf{s}})$:closest reference point 
-        \State \mathbf{Selection}($F_l,R^p,\pi,P_{t+1}$,N)  \% Select Remaining points from last front
+        \State $\pi({\textbf{s})}$=\textbf{Associate}$(F_l,R^p)$ \% $\pi({\textbf{s}})$:closest reference point 
+        \State \textbf{Selection}($F_l,R^p,\pi,P_{t+1}$,N)  \% Select Remaining points from last front
         
         \EndIf
         
