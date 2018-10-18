@@ -129,23 +129,32 @@ The novelty of our works can be summarized as follows:
 \section{Background}
 
 
+During design phase, the developers have to deal with multiple designs alternative to make sure functional requirements as well as some non-functional requirements. But some requirements like reusability and modularity have insufficiency of measuring methods with quantifiable results. For software quality modeling, Bansiya and Davis gave some lower-level metrics well-defined in terms of design characteristics only for Object Oriented (OO) software engineering\cite{bansiya2002hierarchical}. Later, Some metrics are defined by Narasimhan and Hendradjaya to measure complexities and criticalities while packing components of a software and linking bridge between them\cite{narasimhan2007some}. Besides those reusability and modularity concepts, Alshammari \textit{et. al.} presented security metrics based on composition, coupling, extensibility, inheritance, and the design size of a given OO, multi-class program\cite{alshammari2010security}. 
+
+With those quantifiable results, the software engineering(SE) activities are formulated as search based problem to be solved by metaheuristics and there has been a a dramatic increase in work on Search Based Software Engineering
+(SBSE), an approach to Software Engineering (SE) in which Search Based Optimization (SBO) algorithms
+are used to address problems in SE\cite{harman2012search}. In that years there was a trend in SBSE field to adopt Multiobjective Evolutionary Optimization Algorithms (MEOAs)\cite{zhou2011multiobjective} like NSGA-II(Nondominated Sorting Genetic Algorithm II)\cite{deb2002fast} and SPEA2(Strength Pareto Evolutionary Algorithm 2)\cite{zitzler2001spea2}. But those studies only tracked 2-3 objectives problems \cite{sayyad2013pareto}. Because 
+
+
+
+
 %\subsection{Related Work}
-There some good work on the search based software engineering. 
-Ram{\'\i}ez \textit{et al}~\cite{ramirez2015approach} formulated discovery of software architecture as a search problem.
-In their work, UML class diagram of the software architecture is used as the information provider of the classes and relationship. Then a component is represented by a cohesive group of classes and there any classes must be belong to only one component \cite{ramirez2016comparative}. Two components are linked with the connectors. Those connectors are the UML relation among the classes. They have used 9 metrics on their experiment which are related to modularly, reusability, and analyzability. To generate solution they have used NSGAII, NSGAII, MOEA/D, $\epsilon - $MOEA algorithms. In their later work they have used MOEA+LS algorithms~\cite{ramirez2017effect}
+%There some good work on the search based software engineering. 
+%Ram{\'\i}ez \textit{et al}~\cite{ramirez2015approach} formulated discovery of software architecture as a search problem.
+%In their work, UML class diagram of the software architecture is used as the information provider of the classes and relationship. Then a component is represented by a cohesive group of classes and there any classes must be belong to only one component \cite{ramirez2016comparative}. Two components are linked with the connectors. Those connectors are the UML relation among the classes. They have used 9 metrics on their experiment which are related to modularly, reusability, and analyzability. To generate solution they have used NSGAII, NSGAII, MOEA/D, $\epsilon - $MOEA algorithms. In their later work they have used MOEA+LS algorithms~\cite{ramirez2017effect}
 
-Narasimhan \textit{et al}~\cite{narasimhan2004new} have proposed some complexity metrics for a component. 
+%Narasimhan \textit{et al}~\cite{narasimhan2004new} have proposed some complexity metrics for a component. 
 
-Malhotr  \textit{et al}~\cite{malhotra2017exploratory} also worked related to our work. In their work they mainly focused on software system for Android. They also proposed Object Oriented Metrics 
+%Malhotr  \textit{et al}~\cite{malhotra2017exploratory} also worked related to our work. In their work they mainly focused on software system for Android. They also proposed Object Oriented Metrics 
 
 
-In past research, multi-objective evolutionary algorithms(MOEAs) ~\cite{zhou2011multiobjective} is NSGA-II(Non dominated Sorting Genetic Algorithm II) ~\cite{deb2002fast} are widely used.
+%In past research, multi-objective evolutionary algorithms(MOEAs) ~\cite{zhou2011multiobjective} is NSGA-II(Non dominated Sorting Genetic Algorithm II) ~\cite{deb2002fast} are widely used.
 
-But due to complexity of Software Engineering many-objective algorithms generate much better results than MOEAs~\cite{purshouse2007evolutionary, coello2007evolutionary}. 
+%But due to complexity of Software Engineering many-objective algorithms generate much better results than MOEAs~\cite{purshouse2007evolutionary, coello2007evolutionary}. 
 
-Hence, in Recent times for Evolutionary Computation of SBSE many objective algorithms are used~\cite{ramirez2016comparative,bader2011hype, yang2013grid, zhang2007moea}.
+%Hence, in Recent times for Evolutionary Computation of SBSE many objective algorithms are used~\cite{ramirez2016comparative,bader2011hype, yang2013grid, zhang2007moea}.
 
-For the necessity of Many-Objective Algorithms, many researchers worked to improve its performance. Dev \textit{et. el.}~\cite{deb2014evolutionary} have proposed NSGAIII algorithms, which is most popular Many-Objective Algorithms. In recent times researchers also worked based on this algorithms. Yuan \textit{et al}~\cite{yuan2016new} have developed ThetaDEA algorithms which is an improved version of NSGAIII algorithms. 
+%For the necessity of Many-Objective Algorithms, many researchers worked to improve its performance. Dev \textit{et. el.}~\cite{deb2014evolutionary} have proposed NSGAIII algorithms, which is most popular Many-Objective Algorithms. In recent times researchers also worked based on this algorithms. Yuan \textit{et al}~\cite{yuan2016new} have developed ThetaDEA algorithms which is an improved version of NSGAIII algorithms. 
 
 
 
@@ -312,7 +321,7 @@ cc=\#con - \#com + \#con\_com
 
 \item \textbf{Groups/Components Ratio (gcr):}
 The metric is the ratio of number of connected classes ($\#classes_{connected}$) and number of components ($\#component$). Then,
-\begin{equation}
+\begin{equation} \label{gcr_eq}
 gcr=\frac{\#classes_{connected}}{\#component}
 \end{equation}
 It is proposed by  Narasimhan and Hendradjaya\cite{narasimhan2007some}.
@@ -340,14 +349,13 @@ abs=\frac{1}{n}\sum{abs_{i}}
 Security is recently considered very important part of  software engineering. In genotype representation, each component works individually and  communicate with each other through the connection between them. 
 %Here outer a malicious component can set up to make connecting one of the components of a software and raise a security worry.  
 Careful connection set up between different components can bring down this security concern. Hence, we proposed five security metrics to determine the risk of a genotype. \\ 
-First, we have to identify \textbf{Critical Classes}. A class will be called critical if any of its classified private attributes can be modified from outer side of that class \cite{alshammari2010security}. A component with the critical class will be considered as a critical component. Those components have higher security  vulnerabilities . The formation and connection of that component must be set carefully to reduce those  vulnerabilities .
+First, we have to identify \textbf{Critical Classes}. A class will be called critical if any of its classified private attributes can be modified from outer side of that class\cite{alshammari2010security}. A component with the critical class will be considered as a critical component. Those components have higher security  vulnerabilities . The formation and connection of that component must be set carefully to reduce those  vulnerabilities .
 
-For all metrics bellow, let us assume that, the total number of component be $n$ and $i$ represents $i^{th}$ component.
+For all metrics bellow, let us assume that the total number of component be $n$ and $i$ represents the $i^{th}$ component.
 
 \begin{enumerate}
-\item \textbf{Composite-Part Critical Classes (CPCC):} If any class has one or many classified attributes which are the object of a critical class, then that class will have critical security concern. Here critical class provides either composition, or aggregation, or association related to that class. If both this class and critical class belong to the same component, then risk of attack from another component will be minimized. \\
-Let us assume that, for component $i$, $cc_{i}$ be the set of critical classes and $CPRCC_{inside}(x)$ be a function where $x$ is critical class. This function returns number of classes those are in the same component of x and they receive composite part relation from critical class $x$. 
-$CPRCC_{total}(x)$ is returns total number of classes  which receive composite similar relation from critical class $x$.
+\item \textbf{Composite-Part Critical Classes (CPCC):} If any class has one or many classified attributes which are the objects of a critical class, then that class will have critical security concern. Critical class provides either composition, aggregation, or association related to that class. If both this class and critical class belong to the same component, then risk of attack from another component will be minimized. Let us assume that for component $i$, $cc_{i}$ be the set of critical classes. Let $CPRCC_{inside}(x)$ be a function (where $x$ is critical class) that returns number of classes from the same component of x and they receive composition, aggregation, or association relation from critical class $x$. Let
+$CPRCC_{total}(x)$ be another function that returns total number of classes  which receive those types of relation from critical class $x$.
 
 \begin{equation}\label{cpcc_eq}
 \begin{array}{l}
@@ -356,10 +364,8 @@ cpcc=\frac{1}{n}\sum_{i=1}^{n}{cpcc_{i}}
 \end{array}
 \end{equation}
 
-\item \textbf{Critical Classes Extensibility (CCE):} If any class extends or inherits a critical class,  that class also  has security concerns because that class can be accessed through the critical class. This type of classes receive the generalization relationship from a critical class. Therefore, like CPCC CCE is a metric to keep critical class and it extends class in a same component. 
-$GRCC_{inside}(x)$ is a function where $x$ is critical class. This function returns number of classes those are in the same component of x and they receive generalization relation from critical class $x$.
-
-$GRCC_{total}(x)$ is similar., but it returns total number of classes those receive generalization relation from critical class $x$.
+\item \textbf{Critical Classes Extensibility (CCE):} If any class extends or inherits a critical class,  there is also security concerns because that class can be accessed through the critical class. This type of classes receive the generalization relationship from a critical class. Therefore, like CPCC, CCE is a metric to keep critical class and it extended classes in the same component. 
+Here, let $GRCC_{inside}(x)$ be a function (where $x$ is critical class) that returns  the number of classes those are in the same component of $x$ and  receive generalization relation from critical class $x$. Let $GRCC_{total}(x)$ be a retution of critical class $x$ that rnfuncs the total number of classes receiving generalization relation from critical class $x$.
 \begin{equation}\label{cce_eq}
 \begin{array}{l}
 cce_{i}=\sum_{cc \in cc_{i}}{\frac{GRCC_{inside}(cc)}{GRCC_{total}(cc)}}\\\\
@@ -367,10 +373,8 @@ cce=\frac{1}{n}\sum_{i=1}^{n}{cce_{i}}
 \end{array}
 \end{equation}
 
-\item \textbf{Critical Classes Coupling (CCC):} Previously we have defined that critical class is a class which  contains classified private attributes that can be modified by other classes. Now let  $AC_{i}$ and $CC_{i}$ be respectively  set of all classes and critical classes define in a component $c_{i}$. \\
-$cc$ is a critical class of $c_{i}$.
-So $cc \in CC_{i}$ \\
-$CA_{cc}$ is the set of critical classified attributes of a critical class $cc$. $\alpha(CA_{cc})$ is the set of classes those modify critical private attributes of $cc$. In this case, the genotype will be more secure if  more number of classes of $\alpha(CA_{cc})$ belong to the same component of $cc$.
+\item \textbf{Critical Classes Coupling (CCC):} Let  $AC_{i}$ and $CC_{i}$ be set of all classes and critical classes respectively of a component $c_{i}$. Let $cc$ is a critical class abd it belongs to the component $c_{i}$, $cc \in CC_{i}$ \\
+Let $CA_{cc}$ be the set of critical classified attributes of a critical class $cc$ and $\alpha(CA_{cc})$ be the set of classes those modify critical private attributes of $cc$. In this case, the genotype will be more secure if  more number of classes of $\alpha(CA_{cc})$ belong to the same component of $cc$. Then for $i^{th}$ component $c_i$,
 \begin{equation}\label{ccc_eq}
  \begin{array}{l}
 ccc_{i}=\sum_{cc \in CC_{i}}{\frac{n(\alpha(CA_{cc}) \cap CA_{i})}{n(\alpha(CA_{cc})}}\\\\
@@ -379,8 +383,7 @@ ccc=\frac{1}{n}\sum{ccc_{i}}
 \end{equation}
 
 \item \textbf{Classified Methods Extensibility (cme):} 
-Malicious components can also modify critical information of any class by extending non-finalized classified methods. This metric is the ratio of extendable non-finalized methods inside a component and total extendable non-finalized methods. This ratio is the $cme$ value for a component. Overall $cme$ is mean of all components.\\
-Lets assume that for component $i$, $\#enfm_{inside}$ and $\#enfm_{total}$ are  extendable non-finalized methods inside a component and total extendable non-finalized methods respectively.
+Malicious components can also modify critical information of any class by extending non-finalized classified methods. This metric is the ratio of extendable non-finalized methods inside a component and total extendable non-finalized methods. Let us assume that for component $i$, $\#enfm_{inside}$ and $\#enfm_{total}$ are  extendable non-finalized methods inside a component and total extendable non-finalized methods, respectively. Then,
 \begin{equation}\label{cme_eq}
  \begin{array}{l}
 cme_{i}=\frac{\#enfm_{inside}}{\#enfm_{total}} \\
@@ -390,8 +393,7 @@ cme=\frac{1}{n}\sum{cme_i}
 
 
 \item \textbf{Classified Attribute Extensibility (cae):}
-Similar to $cme$, $cae$ is the ratio of extendable non-finalized attributes inside a component and total extendable non-finalized attributes.\\
-Lets assume that for component $i$, $\#enfa_{inside}$ and $\#enfa_{total}$ are  extendable non-finalized attributes inside a component and total extendable non-finalized attributes respectively.
+Similar to $cme$, $cae$ is the ratio of extendable non-finalized attributes inside a component and total extendable non-finalized attributes.Let us assume that for component $i$, $\#enfa_{inside}$ and $\#enfa_{total}$ are  extendable non-finalized attributes inside a component and total extendable non-finalized attributes, respectively. Then,
 \begin{equation}\label{cae_eq}
  \begin{array}{l}
 cae_{i}=\frac{\#enfa_{inside}}{\#enfa_{total}} \\\\
@@ -405,11 +407,10 @@ cae=\frac{1}{n}\sum{cae_i}
  
 
 
-\section{Methodologies}
+\section{Methodology}
 \label{sec:methodologies}
 
-\subsection{Overall Process}
-We have formulated the discovery of the software architecture as a search-based optimization problem. Our goal is to find optimized architecture (class diagram) in terms of $15$ conflicting performance metrics. The problem is thus formulated as a Many Objective Optimization Problem (MaOP) and solved using evolutionary Many-Objective Optimization algorithms. The interesting property of these optimizers is that they can offer comparability among solutions beyond Pareto dominance and can be adapted to solve various classes of problems. One such modern state of the art many objective optimizer is NSGA-III, which has been widely accepted in the research community. NSGAIII utilizes reference point based clustering and niche count based selection procedure to balance diversity and convergence among solutions. While the basic NSGAIII works well for standard MaOPs, they do not however incorporate any problem specific domain knowledge to the algorithm. With that motivation, we have replaced the niching based selection procedure of NSGAIII with a Fuzzy logic based selection scheme where problem specific knowledge have been incorporated. The proposed algorithm $F$-NSGAIII has been found to be better performing than the original one for this particular problem and an in depth analysis at experimental studies section conforms with our theoretical reasonings.
+We have formulated the software architecture as a search-based optimization problem. Our goal is to find optimized architecture (class diagram) in terms of $15$ conflicting performance metrics. The problem is thus formulated as a Many Objective Optimization Problem (MaOP) and solved using evolutionary Many-Objective Optimization algorithms. The interesting property of these optimizers is that they can offer comparability among solutions beyond Pareto dominance and can be adapted to solve various classes of problems. One such modern state of the art many objective optimizer is NSGA-III, which has been widely accepted in the research community. NSGAIII utilizes reference point based clustering and niche count based selection procedure to balance diversity and convergence among solutions. While the basic NSGAIII works well for standard MaOPs, they do not however incorporate any problem specific domain knowledge to the algorithm. Addressing this limitation, we have replaced the niching based selection procedure of NSGAIII with a Fuzzy logic based selection scheme where problem specific knowledge have been incorporated. The proposed algorithm $F$-NSGAIII has been found to be better performing than the original one for this particular problem and an in depth analysis at experimental studies section conforms with our theoretical reasonings.
 
 %Recently, the MaOP has gained popularity among researcher due to their frequent appearance in real world problem. 
 
@@ -417,10 +418,9 @@ We have formulated the discovery of the software architecture as a search-based 
 \subsection{Adaptation of NAGAIII}
 \label{subsec:pseudocode}
 
-The basic algorithm of NSGAIII starts with a randomly generated parent population $P_t$ of $N$ solutions and a set of generated/supplied reference points $R^p$. It then creates an offspring population $Q_t$ of size $N$ by applying crossover and mutation. The solutions are combined $C_t = P_t \bigcup Q_t$ (of size 2N) and ranked into different Pareto fronts ($F_1, F_2, \cdots, F_n$). Solutions within a particular Pareto front are non-dominated to each other and a lower ranked Pareto front represents that solutions in that front are less dominated than higher ranked ones. For elite preservation thus each non-dominated Pareto fronts is selected to construct a new population $S_t$, starting from $F_1$, until the size of $S_t$ is equal to $N$ or for the first time exceeds $N$. Let us say the last level included is the $l$-th level. Thus, all solutions from level $(l + 1)$ onwards are rejected from the combined population $C_t$. 
+The basic algorithm of NSGAIII starts with a randomly generated parent population $P_t$ of $N$ solutions and a set of generated/supplied reference points $R^p$. It then creates an offspring population $Q_t$ of size $N$ by applying crossover and mutation. The solutions are combined $C_t = P_t \bigcup Q_t$ (of size 2N) and ranked into different Pareto fronts ($F_1, F_2, \cdots, F_n$). Solutions within a particular Pareto front are non-dominated to each other and a lower ranked Pareto front represents that the solutions in that front are less dominated than higher ranked ones. For elite preservation, each non-dominated Pareto front is selected to construct a new population $S_t$, starting from $F_1$, until the size of $S_t$ is equal to $N$ or for the first time exceeds $N$. Let us say the last level included is the $l$-th level. Thus, all solutions from level $(l + 1)$ onwards are rejected from the combined population $C_t$. 
 
-If the population size in $S_t$ are Based on the euclidean distance between a solution and the reference points population
-It then adaptively constructs $m$ fuzzy membership functions i.e., one function for each objective 
+If the population size in $S_t$ are based on the euclidean distance between a solution and the reference points population, it then adaptively constructs $m$ fuzzy membership functions i.e., one function for each objective 
 and utilizes them to compute dominance degrees of the solutions. Finally, $F$-NSGAIII assigns fitness to the solutions and selects the best ones from different clusters in a round-robin fashion to from a new population $P_{t+1}$ for the next generation.  
 We summarize the steps of our method in Algorithm 1, which are explained further in the following subsections.
 
@@ -579,12 +579,12 @@ _2 \in C_t,\pi(\textbf{s} \in C_t)$\\
  	\textbf{Output:} $f$
 	
  	\begin{algorithmic}[1]
-    \State set $w^g,w^d,w^{\perp}$ according to problem specification
+    \State set $w^g,w^d,w^{\perp}$ \% according to problem specification, example values are given in equation \ref{weight_valued}
     \State $\sigma \gets 0.388$
     \State $\mu \gets -1$
     \State $d_1 \gets 0$
     \State $d_2 \gets 0$
-    \For {$i \gets 1 {\ }TO {\ } m$ }
+    \For {$i \gets 1 {\ }To {\ } m$ }
     \State $x \gets \tilde{f_i}(\mathbf{s}_1)-\tilde{f_i}(\mathbf{s}_2) $
     \State $d_1 \gets d_1+\log(G(x))$
      \State $d_2 \gets d_2+\log(G(-x))$
@@ -623,12 +623,12 @@ _2 \in C_t,\pi(\textbf{s} \in C_t)$\\
 
 
 
-\subsection{Selection}
-After Non-dominated ranking, we select solutions of all front expect last Pareto-Front. For solutions in the last Pareto-Front we select the best solution using Comparator function defined in Algorithm \ref{alg:Comparetor}. 
+\subsection{Selection Solutions from  last Pareto-Front}
+After Non-dominated ranking, we select solutions of all fronts expect the last Pareto-Front. For solutions in the last Pareto-Front, we select the best solution using Comparator function defined in Algorithm \ref{alg:Comparetor}. This Comparator is used in Selection (Algorithm \ref{algo_selection}) of last Pareto-Front. 
 Then we make a set of solutions for each reference points and add the best solution to $P_{t+1} $.
   
 
-\begin{algorithm}[!ht]
+\begin{algorithm}[!ht] \label{algo_selection}
 	
  	\textbf{Input:} $C_t,R^p,\pi(\mathbf{s} \in C_t),P_{t+1},N$\\
  	\textbf{Output:} $P_{t+1}$
@@ -647,7 +647,7 @@ Then we make a set of solutions for each reference points and add the best solut
     \EndIf
     
     \EndFor
-    \State $P_{t+1} \gets P_{t+1} \cup \mathbf{s}_c$
+    \State $P_{t+1} \gets P_{t+1} \cup \mathbf{s}_b$
     \If {$|P_{t+1}|=N$}
     \State $return$
     \EndIf
@@ -665,30 +665,46 @@ Then we make a set of solutions for each reference points and add the best solut
 
 \section{Experiments}
 \subsection{Dataset Formulation}
-In our research, we try to develop an automated method to discover the best fitted underlying architecture to serve its functional requirements as well as nonfunctional requirements. This work will help software architects to find a good architecture and find its best equivalent alternative for the changes during the development process. The input of our work is a UML class diagram of a software. To get UML class diagram, we have used Open Source Java project from github and other sites. Then we have reversed engineered those codes to UML class diagram. 
+We try to develop an automated method to discover the best fitted underlying architecture to serve its functional requirements as well as nonfunctional requirements. This work will help software architects to find a good architecture and find its best equivalent alternative for the changes during the development process. The input of our work is a UML class diagram of a software. To get UML class diagram, we have used Open Source Java project from github and other sites. Then we have reversed engineered those codes to UML class diagram. 
 
 \subsection{Algorithm Implementation}
-In this part, we have solved a Search Based Software Engineering (SBSE) problem using Evolutionary Many Objective Algorithms.
+We have solved a Search Based Software Engineering (SBSE) problem using Evolutionary Many Objective Algorithms.
 As parameter of those Evolutionary Many Objective Algorithms, we have considered:
-\begin{displaymath}\label{population_size}
+\begin{equation}\label{population_size}
 Population\_Size=320
-\end{displaymath}
-\begin{displaymath}\label{ref_point}
+\end{equation}
+\begin{equation}\label{ref_point}
 Reference\_Point\_Size=640
-\end{displaymath}
-\begin{displaymath} \label{max_gen}
+\end{equation}
+\begin{equation} \label{max_gen}
 Max\_Generation=100
-\end{displaymath}
-\begin{displaymath} \label{run_num}
+\end{equation}
+\begin{equation} \label{run_num}
 Run\_Number=5
-\end{displaymath}
+\end{equation}
 
 
 
-At the very beginning, we generate 320 random genotypes from a class diagram and they are added to the solution set. Then we have calculated 15 evaluation metrics for each genotype. Here some metrics are minimizing objectives, and some are maximizing objectives. Which metrics are minimizing objectives, and which are maximizing objectives vary according to the requirement of the software. Again, all security metrics must be set as minimizing. Following a Table~\ref{tb:metrics table} shows whether a matrices is only maximizing or only minimizing or both. 
-Here, $\updownarrow$ means metrics are can  be either maximizing or minimizing. This will be decided according to the requirement of the software. Only $\uparrow$ or $\downarrow$ means, those metrics are only maximizing or minimizing respectively.  
+At the very beginning, we generate 320 random genotypes from a class diagram and they are added to the solution set. Then we have calculated 15 evaluation metrics for each genotype. Here some metrics are minimizing objectives, and some are maximizing objectives. The property( maximizing // minimizing) of objective of different metrics vary according to the requirement of the software. However, all security metrics must be set as minimizing. Table~\ref{tb:metrics table} shows whether a metric is only maximizing or only minimizing or both. 
 \begin{table}[!h]
-\caption{Metrics Table}
+    \centering
+    \caption{Metrics Optimization Direction}
+    \begin{tabular}{|c|c|}
+    \hline
+        $\updownarrow$ &  Metrics can be either maximizing or minimizing \\ \hline
+        $\uparrow$ & Metrics are maximizing \\ \hline
+        $\downarrow$ & Metrics are minimizing \\ 
+        \hline
+    \end{tabular}
+    
+    \label{table_metrics_optimization}
+\end{table}
+
+
+
+Here, $\updownarrow$ means metrics are can  be either maximizing or minimizing. This will be decided according to the requirement of the software. Only $\uparrow$ or $\downarrow$ means, those metrics are only maximizing or minimizing respectively.  
+\begin{table}[!h] \label{tab:matrics}
+\caption{Objective Direction of Different Metrics}
 
 \begin{center}
 
@@ -726,25 +742,30 @@ $cpcc$,$cce$,$ccc$,$cme$,$cae$ & \textbf{$\downarrow$} & $\downarrow$ \\ \hline
 \label{tb:metrics table}
 
 \end{table}
-Now many objective algorithms are designed to work only on minimizing objective. That is why we have taken the inverse of those metrics. Again, here value of some metrics can be zero and if that is a maximizing metric, then the program will throw an Exception. For that reason, we have added a very small value, EPSILON of when a metric value is zero. Again for $erp$ calculation we divide the metric value by the sum of all weighted relationships of the class diagram. This value is a constant as it does not depend on the structure of the component. This operation keeps $erp$ value in range $ [0,2] $.Parameters values in different metrics equations are:
-\begin{itemize}
-\item $erp$ :
-\begin{displaymath}
+Our objective algorithm is designed to work only on minimizing objective. That is why we have taken the inverse of the maximizing metrics(Table \ref{tab:matrics}). But here value of some maximizing metrics can be zero, then inversion of those value will throw an Exception. For that reason, we have added a very small value, EPSILON to metrics valued zero. Again for $erp$ calculation, we divide the metric value by the sum of all weighted relationships of the class diagram. This value is a constant as it does not depend on the structure of the component. This operation keeps $erp$ value in the range $ [0,2] $.\\
+
+
+Parameters values in different metric equations are as follows:
+
+\begin{equation}
+erp:
 w_{as}=2 , 
 w_{co}=3, 
 w_{ag}=3 ,
 w_{ge}=5,
-\end{displaymath}
-\item $lc$ :
-\begin{displaymath}
+\end{equation}
+
+\begin{equation}
+lc:
 threshold_{link}=8
-\end{displaymath}
-\item $sc$ :
-\begin{displaymath}
+\end{equation}
+
+\begin{equation}
+sc:
 threshold_{size}=0.3
-\end{displaymath}
-\end{itemize}
-Now many objective optimizations will perform some mutation and crossover operation on initial population and generate some offsprings. 
+\end{equation}
+
+Now, many objective optimizations will perform some mutation and crossover operations on initial population and generate some offsprings. 
 We used five mutation operations. The mutation probabilities are:
 
 
@@ -759,28 +780,48 @@ move=0.2
 \end{displaymath}
 
 
-We will generate 320 offsprings. Now, among 320 offspring and 320 existing solutions we will select 320 solutions for the next iteration.   
-For comparison algorithms, we have set weight values $w^g=1,w^d=1,w^{\perp}=5$. 
-
-As we randomly generate initial and mutated genotype, there can be some solutions which are irrelevant and inappropriate to the software. To identify those solutions, we have set some constraints. In the selection process, algorithms try to omit those solutions which violate constrains. 
-\begin{itemize}
-\item Constrains:
-\begin{equation}
-\begin{array}{l}
-icd \le 0 ,
-coc \le 0 , 
-gcr \le 0,
-abs \le 0 ,
-ins \le 0
-\end{array}
+We will generate 320 offsprings. Now, among 320 offspring and 320 existing solutions, we will select 320 solutions for the next iteration.   
+For comparison algorithms, we have set weight values
+\begin{equation}\label{weight_valued}
+w^g=1,w^d=1,w^{\perp}=5.    
 \end{equation}
+ 
+
+As we randomly generate initial and mutated genotype, there can be some solutions which are irrelevant and inappropriate to the software. To identify those solutions, we have set some constraints. In the selection process, algorithms try to omit those solutions which violate constraints. \\
+% \begin{itemize}
+% \item Constraints:
+% \begin{equation}
+% \begin{array}{l}
+% icd \le 0 ,
+% coc \le 0 , 
+% gcr \le 0,
+% abs \le 0 ,
+% ins \le 0
+% \end{array}
+% \end{equation}
+% \end{itemize}
+
+\textbf{Constraints:}
+
+\begin{itemize}
+    \item $icd$ (Equation \ref{icd_eq}) and $coc$ (Equation \ref{coc_eq}) become zero, if there is no component in the architecture with one or more internal relationship . So to make sure internal relationship, we added those constraints
+    \begin{equation}
+        icd>0, coc>0
+    \end{equation}
+    \item $gcr$ (Equation \ref{gcr_eq}) and $id$ (Equation \ref{id_eq} ) become zero, if there is no relation between the component of an architecture. To prevent this, we added this constraint
+    \begin{equation}
+        gcr>0, id>0
+    \end{equation}
+    
+    
 \end{itemize}
+
 
 In final result, all solution with any constraint violation are rejected.
 
 
 \subsection{Evaluation}
-After execution of our algorithm, we have a solution set. Those are possible best alternative of architecture. Now to find the performance of our algorithms, we also evaluate the same problem with basic NSGAIII algorithms. As the problem is to optimize 15 objectives, it is better to compare this high dimensional solution using hyper-volume~\cite{bader2011hype}. For hyper-volume calculation we need true Pareto-Front of the solution. But there are no true Pareto-Front for this problem. Again, finding true Pareto-front for this real-world problem is difficult. To generate true Pareto-Front, we have run this algorithm for 3000 generations. After this number of generations, we can assume that NSGAIII will produce only non-dominated solutions and it has reached its maximum converging position.
+After execution of the algorithm, we have a solution set. Those are possible best alternatives of the desired software architecture. Now, to find the performance of our algorithms, we also evaluate the same problem with basic NSGAIII algorithms. As the problem is to optimize 15 objectives, it is better to compare this high dimensional solution using hyper-volume\cite{bader2011hype}. For hyper-volume calculation, we need true Pareto-Front of the solution. But there are no true Pareto-Front for this problem. Again, finding true Pareto-front for this real-world problem is difficult. To generate true Pareto-Front, we have run this algorithm for 3000 generations. After this number of generation, we have 
 Now using this solution as the reference points, we find the nadir points by taking maximum value for each objective. Then we define bounds which is slightly greater than the Nadir points. We calculate bound by multiplying 1.1 with nadir point. Then Nadir points and bounds remain same for that specific problem. \\
 
 Now both our modified and basic NSGAIII algorithms are executed for 100 generations on that problem. With both algorithms' result, we have done following execution. 
@@ -800,8 +841,8 @@ Parameters of the projects are shown in Table II.
 
 \begin{tabular}{ |c|c|c|c|c|c|c|c| } 
 
-\hline \multirow{2}{*}{Project } &	\multirow{2}{*}{\#Classes}&	\multicolumn{5}{|c|}{Number of Relations} & \#CC\\
-& & As & De & Ag & Co & Ge  \\ \hline
+\hline \multirow{2}{*}{Project } &	\multirow{2}{*}{\#Classes}&	\multicolumn{5}{|c|}{Number of Relations} & \#CC\\ \cline{3-7}
+& & As & De & Ag & Co & Ge & \\ \hline
 
 xapool & 49 & 26 & 16 & 0 & 0 & 37 & 8 \\
 \hline
